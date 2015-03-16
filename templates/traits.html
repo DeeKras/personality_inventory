@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<style>
+.columns {
+    -webkit-column-count: 6; /* Chrome, Safari, Opera */
+    -moz-column-count: 6; /* Firefox */
+    column-count: 6;
+
+     -moz-column-fill: balanced; /* Firefox */
+    column-fill: balanced;
+}
+
+
+.h2 {
+
+    background-size: 80px ;
+    color: black;
+    font-size: large;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+</style>
+<h1> Personality Inventory</h1>
+
+<table width="100%">
+    <tr valign="top">
+        <td width="(100/3)%"><center>
+            <h1>1.</h1>
+            Click on the qualities that you already possess.<br>
+            <input type="submit" name=mode value="traits I have">
+        </td>
+        <td width="(100/3)%"><center>
+            <h1>2.</h1>
+            Look at those traits and click on those that you do not like.<br>
+            <input type="submit" name=mode value="traits I have that I don't like"><br>
+            <i>Just acknowledging that you want to get<br> rid of a personality trait is the first step.</i>
+        </td>
+        <td width="(100/3)%"><center>
+            <h1>3.</h1>
+            Click on the qualities that you wish you had.<br>
+            <input type="submit" name=mode value="traits I wish I had"><br>
+            <i>Understanding what you really want to reflect<br> to the rest of the world is the second step.</i>
+        </td>
+    </tr>
+    </center>
+</table >
+<br><br>
+Change will not happen overnight, but you can begin to reflect more of the inner person you want to be.
+
+<hr>
+<h2>To make change to any traits,</h2>
+Click on all of the same category, then click the corresponding button below.<br>
+All those traits will be changed at the same time and placed in the right category.<br><br>
+
+<table width="100%">
+    <form action="/traits" method="post">
+    <tr>
+        <td width="25%">
+            <input type="submit" name=mode value="traits I have">
+        </td>
+        <td width="25%">
+            <input type="submit" name=mode value="traits I have that I don't like">
+        </td>
+        <td width="25%">
+            <input type="submit" name=mode value="traits I wish I had">
+        </td>
+        <td width="25%">
+            <input type="submit" name=mode value="oops, mark as unmarked">
+        </td>
+    </tr>
+
+</table>
+
+<br><div class="h2">Traits that you didn't mark</div>
+<div class="columns">
+    <table>
+        {%for trait in other_traits %}
+        <tr>
+            <td>
+                <input type="checkbox" name="trait" value={{trait}}>
+                <font color="black">{{trait}}</font>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<br><div class="h2">Traits you have </div>
+<div class="columns">
+    <table>
+        {%for trait in traits_have %}
+        <tr>
+            <td>
+                <input type="checkbox" name="trait" value={{trait}}>
+                <font color="green">{{trait}}</font>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<br><div class="h2">Traits you have (that you wish you didn't)</div>
+<div class="columns">
+    <table>
+        {%for trait in traits_unhappy %}
+        <tr>
+            <td>
+                <input type="checkbox" name="trait" value={{trait}}>
+                <font color="red">{{trait}}</font>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+<br><div class="h2">Traits you wish you had</div>
+<div class="columns">
+    <table>
+        {%for trait in traits_wish %}
+        <tr>
+            <td>
+                <input type="checkbox" name="trait" value={{trait}}>
+                <font color="blue">{{trait}}</font>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+    </form>
+</body>
+</html>
